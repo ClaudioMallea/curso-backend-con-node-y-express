@@ -1,0 +1,32 @@
+{
+  "name": "curso-backend-con-node-y-express",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "start": "node index.js",
+    "lint": "eslint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ClaudioMallea/curso-backend-con-node-y-express.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ClaudioMallea/curso-backend-con-node-y-express/issues"
+  },
+  "homepage": "https://github.com/ClaudioMallea/curso-backend-con-node-y-express#readme",
+  "devDependencies": {
+    "eslint": "^8.36.0",
+    "eslint-config-prettier": "^8.7.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "nodemon": "^2.0.21",
+    "prettier": "^2.8.4"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
