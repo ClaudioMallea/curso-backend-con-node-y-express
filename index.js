@@ -1,10 +1,10 @@
 const express = require('express');
+const faker = require('faker');
+const routerApi = require('./routes');
 const app = express();
 const port = 3005;
 
-app.get('/', (req, res)=>{
-  res.json({name:"Claudio", age:25});
-})
+routerApi(app);
 
 app.get('/user/:userId/message/:messageId', (req, res)=>{
   const {userId,messageId} = req.params;
