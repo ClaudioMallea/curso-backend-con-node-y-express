@@ -1,5 +1,5 @@
 const faker = require('faker');
-const boom  = require("@hapi/boom");
+const boom = require('@hapi/boom');
 
 class ProductsService {
   constructor(){
@@ -13,7 +13,7 @@ class ProductsService {
         name:faker.commerce.productName(),
         price: parseInt(faker.commerce.price()),
         image: faker.image.imageUrl(),
-        isBlock: faker.datatype.boolean(),
+        isBlock: faker.datatype.boolean,
       });
 
     }
@@ -39,6 +39,9 @@ class ProductsService {
     }
     return product
   }
+
+
+  
   async update(id,changes){
     const index = this.products.findIndex(item => item.id ===id)
     if (index===-1){

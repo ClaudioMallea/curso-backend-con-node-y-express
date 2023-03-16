@@ -1,7 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const ProductsService = require("./../services/product-service")
-
+const ProductsService = require("./../services/product-service");
+const validatorHandler = require("../middlewares/validator.handler");
+const {createProductSchema, updateProductSchema, getProductSchema } = require('../schemas/product.schema');
+const {logErrors, errorHandler,boomErrorHandler} =require("../middlewares/error.handler")
 const service = new ProductsService();
 
 router.get('/', async (req, res)=>{
@@ -9,11 +11,19 @@ router.get('/', async (req, res)=>{
   res.json(products);
 });
 
-router.get('/:id',async (req,res)=>{
-  const {id} = req.params;
-  const product = await service.findOne(id)
-  console.log(product);
-  res.json(product);
+router.get('/:id',
+validatorHandler(getProductSchema, 'params'),
+async (req,res,next)=>{
+
+  try{
+    const {id} = req.params;
+    const product = await service.findOne(id)
+    res.json(product);
+  }
+  catch(err){
+    next(err);
+  }
+
 
 })
 
@@ -51,5 +61,8 @@ router.delete('/:id', async (req,res)=>{
 
 })
 
+router.use(logErrors);
+router.use(boomErrorHandler);
+router.use(errorHandler);
 
 module.exports = router;
